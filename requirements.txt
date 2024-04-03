@@ -1,0 +1,6 @@
+binarytree==6.5.1
+graphviz==0.20.3
+packaging==24.0
+setuptools-scm==8.0.4
+typing_extensions==4.10.0
+wordninja==2.0.0
