@@ -30,18 +30,3 @@ def to_pascal_case(word: str) -> str:
     return __convert(word, convert_to_pascal_case)
 
 
-if __name__ == "__main__":
-
-    word = """@Override 
-    protected void generatenode(basenodemetamodel $string$, compilationunit nodecu, classorinterfacedeclaration "ciao") {
-            nodecu.addimport(clonevisitor.class);
-        }
-        """
-
-    word1 = "ialwayswonderedwhy i got a 100 on mytest"
-
-    word2 = "dot.dot.dot who is there? Whatigot, is a lightinglobe!"
-
-    print(to_camel_case(word))
-    print(to_snake_case(word1))
-    print(to_pascal_case(word2))
