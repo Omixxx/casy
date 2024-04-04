@@ -1,22 +1,14 @@
-from Case import Case
 import punctuation_parser as p_parser
-from case_converter import to_camel_case, to_pascal_case, to_snake_case
+
+from case_converter import (
+    convert_to_camel_case,
+    convert_to_pascal_case,
+    convert_to_snake_case,
+)
 
 
-def __select_case(case: Case):
-    if case == Case.CAMEL_CASE:
-        return to_camel_case
-    elif case == Case.SNAKE_CASE:
-        return to_snake_case
-    elif case == Case.PASCAL_CASE:
-        return to_pascal_case
-    else:
-        return to_snake_case
-
-
-def convert(word: str, case: Case) -> str:
+def __convert(word: str, to_case) -> str:
     word = word.replace("    ", "\t")
-    to_case = __select_case(case)
     result: str = ""
     separator = ""
     for w in word.split(" "):
@@ -24,6 +16,18 @@ def convert(word: str, case: Case) -> str:
         result = result + separator + p_parser.resolve(root, to_case)
         separator = " "
     return result
+
+
+def to_camel_case(word: str) -> str:
+    return __convert(word, convert_to_camel_case)
+
+
+def to_snake_case(word: str) -> str:
+    return __convert(word, convert_to_snake_case)
+
+
+def to_pascal_case(word: str) -> str:
+    return __convert(word, convert_to_pascal_case)
 
 
 if __name__ == "__main__":
@@ -38,6 +42,6 @@ if __name__ == "__main__":
 
     word2 = "dot.dot.dot who is there? Whatigot, is a lightinglobe!"
 
-    print(convert(word, Case.PASCAL_CASE))
-    print(convert(word1, Case.CAMEL_CASE))
-    print(convert(word2, Case.SNAKE_CASE))
+    print(to_camel_case(word))
+    print(to_snake_case(word1))
+    print(to_pascal_case(word2))
